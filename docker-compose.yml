@@ -14,8 +14,8 @@ services:
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=db # name of the database service
-      - DB_NAME=devdb
+      - DB_HOST = db # name of the database service
+      - DB_NAME = devdb
       - DB_USER = devuser
       - DB_PASS = changeme
     depends_on:
