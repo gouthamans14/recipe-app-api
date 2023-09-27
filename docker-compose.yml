@@ -17,7 +17,7 @@ services:
       - DB_HOST = db # name of the database service
       - DB_NAME = devdb
       - DB_USER = devuser
-      - DB_PASS = changeme
+      - DB_PASS = changeme4
     depends_on:
       - db
 
