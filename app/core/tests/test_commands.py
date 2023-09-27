@@ -2,7 +2,7 @@
 Test custom Django management commands.
 
 """
-# noqa
+
 from unittest.mock import patch  # to mock the behaiour of database
 
 from psycopg2 import OperationalError as Psycopg2Error  #  Possibilities of error when we connect to datase before it connects
@@ -20,18 +20,22 @@ class CommandTests(SimpleTestCase):
     """
 
   #  patched_check is argument from decorator.
+
     def test_wait_for_db_read(self, patched_check):
+
         """
         Test waiting for database if database is ready.
         """
-        patched_check.return_value =True  # When we call check, we want to return True value
+        patched_check.return_value =True  
+        # When we call check, we want to return True value
 
         call_command("wait_for_db")
 
         patched_check.assert_called_once_with(databases=['default'])
 
     @patch('time.sleep')
-    def test_wait_for_db_delay(self, patched_sleep, patched_check):  # the decorator argument will be the first argument
+    def test_wait_for_db_delay(self, patched_sleep, patched_check):  
+        # the decorator argument will be the first argument
 
         """
         Test is waiting for database when getting Operational Error.
@@ -44,7 +48,5 @@ class CommandTests(SimpleTestCase):
 
         self.assertEqual(patched_check.call_count,6)
 
-        patched_check.assert_called_with(databases=['default'])  # checks calling the default database
-
-
-# 
+        patched_check.assert_called_with(databases=['default'])  
+        # checks calling the default database
